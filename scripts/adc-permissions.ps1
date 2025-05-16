@@ -1,4 +1,11 @@
-$AccountName = 'myconnectoraccount'
+param(
+    [string]$AccountName
+)
+
+if (-not $AccountName) {
+    $AccountName = Read-Host "Enter the AD Connector service account name"
+}
+
 # DO NOT modify anything below this comment.
 # Getting Active Directory information.
 Import-Module -Name 'ActiveDirectory'

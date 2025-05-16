@@ -1,6 +1,6 @@
-# AWS Private CA Connector for Active Directory - Sample Script
+# AWS Private CA Connector for Active Directory - Samples
 
-This repository contains a PowerShell script (`adc-permissions.ps1`) that delegates the necessary permissions to your Active Directory trust store. This script is **mandatory** for customers using AWS Private CA Connector for Active Directory (C4AD) to ensure successful connector creation and management.
+This repository contains a PowerShell script (`adc-permissions.ps1`) that delegates the necessary permissions to your Active Directory trust store. **This script is mandatory only for customers who want to use AWS Private CA Connector for Active Directory (C4AD) with an [AD Connector](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_ad_connector.html) directory. 
 
 ## Purpose
 - Automates the delegation of required permissions for AWS Private CA Connector for AD.
@@ -11,11 +11,13 @@ This repository contains a PowerShell script (`adc-permissions.ps1`) that delega
 - Sufficient privileges to modify permissions in your AD environment.
 
 ## Usage
-1. Edit the script and set the `$AccountName` variable to the AD Connector service account name.
-2. Run the script in a PowerShell session with administrative privileges:
+Run the script in a PowerShell session with administrative privileges:
+
    ```powershell
-   .\adc-permissions.ps1
+   .\adc-permissions.ps1 -AccountName serviceAccountName
    ```
+   
+> **Note:** This script only works on root domains. If executed in a child domain, the script will display a warning and will not proceed. Ensure you are running the script in the root domain of your Active Directory forest.
 
 ## Feedback and Contributions
 We welcome feedback and contributions from the community! Please open issues or submit pull requests to help improve the script. All contributions are subject to automated testing via GitHub Actions to ensure script quality and reliability.
